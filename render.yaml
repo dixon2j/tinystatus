@@ -2,6 +2,7 @@ services:
   - type: web
     name: TinyStatus Web Server
     runtime: python
+    region: frankfurt
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python -m http.server 8080"
     envVars:
@@ -11,6 +12,7 @@ services:
   - type: worker
     name: TinyStatus Monitor
     runtime: python
+    region: frankfurt
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python tinystatus.py"
     envVars:
