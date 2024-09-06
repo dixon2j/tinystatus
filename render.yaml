@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: TinyStatus Web Server
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python -m http.server 8080"
+    envVars:
+      - key: PORT
+        value: 8080
+
+  - type: worker
+    name: TinyStatus Monitor
+    runtime: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python tinystatus.py"
+    envVars:
+      - key: CHECK_INTERVAL
+        value: "30"
+      - key: MAX_HISTORY_ENTRIES
+        value: "100"
+      - key: LOG_LEVEL
+        value: "INFO"
+      - key: CHECKS_FILE
+        value: "checks.yaml"
+      - key: INCIDENTS_FILE
+        value: "incidents.md"
+      - key: TEMPLATE_FILE
+        value: "index.html.theme"
+      - key: HISTORY_TEMPLATE_FILE
+        value: "history.html.theme"
+      - key: STATUS_HISTORY_FILE
+        value: "history.json"
