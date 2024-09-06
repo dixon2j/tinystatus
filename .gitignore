@@ -2,8 +2,6 @@ index.html
 history.html
 history.json
 nohup.out
-.env
-.env
 .idea/
 .vscode/
 .venv/
@@ -14,7 +12,3 @@ delete/
 .delete/
 pyrightconfig.json
 .DS_Store
-var/data/user_data/conversations/
-electron-conversations-app
-.aider*
-copies
