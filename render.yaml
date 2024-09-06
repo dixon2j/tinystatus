@@ -1,22 +1,9 @@
 services:
   - type: web
-    name: TinyStatus Web Server
+    name: TinyStatus Service
     runtime: python
-    region: frankfurt
-    plan: starter
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python -m http.server 8080"
-    envVars:
-      - key: PORT
-        value: 8080
-
-  - type: worker
-    name: TinyStatus Monitor
-    runtime: python
-    region: frankfurt
-    plan: starter
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python tinystatus.py"
+    buildCommand: pip install -r requirements.txt
+    startCommand: ./start.sh
     envVars:
       - key: CHECK_INTERVAL
         value: "30"
